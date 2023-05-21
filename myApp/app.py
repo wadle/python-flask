@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 info = [
     {
-        "name": "Jitendra Wadle",
+        "name": "My name",
         "age": 33
     }
 ]
