@@ -1,14 +1,19 @@
-from flask import Flask
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-info = [
-    {
-        "name": "My name",
-        "age": 33
-    }
-]
-
-@app.get("/info") #http://127.0.0.1:5000/info
+@app.route("/info", methods=["GET", "POST"])
 def get_info():
-    return {"info": info}
+    submitted_info = None
+
+    if request.method == "POST":
+        submitted_info = {
+            "name": request.form.get("name", "").strip(),
+            "age": request.form.get("age", "").strip(),
+        }
+
+    return render_template("info.html", submitted_info=submitted_info)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

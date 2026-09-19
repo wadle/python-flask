@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Info Form</title>
+</head>
+<body>
+    <h1>Enter your information</h1>
+
+    <form method="post">
+        <p>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </p>
+        <p>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="0" required>
+        </p>
+        <button type="submit">OK</button>
+    </form>
+
+    {% if submitted_info %}
+    <h2>Your information</h2>
+    <p>Name: {{ submitted_info.name }}</p>
+    <p>Age: {{ submitted_info.age }}</p>
+    {% endif %}
+</body>
+</html>
